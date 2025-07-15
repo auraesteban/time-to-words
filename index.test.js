@@ -1,9 +1,19 @@
-const  { convertTimeToWords } = require('./index');
+const { convertTimeToWords } = require('./index');
 
 describe('Time to words', () => {
   it('Handles midnight', () => {
     const timeInWords = convertTimeToWords('0:00');
     expect(timeInWords).toBe('midnight');
+  });
+
+  it('Handles midday', () => {
+    const timeInWords = convertTimeToWords('12:00');
+    expect(timeInWords).toBe('midday');
+  });
+
+  it('Handles 00 - 8:00', () => {
+    const timeInWords = convertTimeToWords('8:00');
+    expect(timeInWords).toBe("eight o'clock");
   });
 
   it('Handles 30 - 8:30', () => {
